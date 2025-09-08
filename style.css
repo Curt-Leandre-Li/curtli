@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+  
+  /* Header */
+  header {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 2rem;
+  }
+  
+  .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    color: #f2f2f2;
+  }
+  
+  nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #bb86fc;
+  }
+  
+  /* Sections */
+  section {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+  }
+  
+  /* Card Layout */
+  .card {
+    background-color: #262626;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: left;
+  }
+  
+  .card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+  }
+  
+  .card h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .card p, .card ul {
+    margin: 0.5rem 0;
+  }
+  
+  .card ul {
+    padding-left: 1.2rem;
+  }
+  
+  .card li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Tags */
+  .tag {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 5px;
+    display: inline-block;
+    font-size: 0.85rem;
+  }
+  
+  /* Resume Download */
+  a {
+    color: #bb86fc;
+  }
+  
+  /* Contact Form Fields (bigger + styled like rest of site) */
+form input, form textarea {
+  width: 100%;
+  max-width: 600px;
+  font-size: 1.1rem;         /* Bigger text */
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background-color: #262626; /* Same as card background */
+  color: #fff;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button {
+  background-color: #bb86fc;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+form button:hover {
+  background-color: #9a6ee3;
+}
+
+/* Contact Form Inputs — Match Rest of Site Style */
+form input, form textarea {
+    width: 100%;
+    max-width: 600px;
+    font-size: 1rem;         /* Matches body text size */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;   /* Matches card spacing */
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #262626; /* Same as card background */
+    color: #f2f2f2;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+  
+  form button {
+    background-color: #bb86fc;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #9a6ee3;
+  }
+  
