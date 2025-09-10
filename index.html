@@ -22,10 +22,11 @@
   </header>
 
   <section id="about" class="card">
-    <h1 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1.2rem;">I'm Curt Li.</h1>
-    <p>Welcome to my website! I am currently a sophomore student at NYU, now majoring in Computer and Data Science. 
-      I am passionate about integrating applied math and coding to data analysis, and combining data analysis and software engineering to solve real-world problems.
-      Looking forward to reach out!
+    <h1 class="big-name">I'm Curt Li.</h1>
+    <p>
+      I'm passionate about combining data analysis and software engineering to solve real-world problems.
+      My background spans mathematical modeling, Python simulations, and applied research in mobility and climate.
+      I'm currently studying Computer and Data Science at NYU, bringing math-heavy insights to real-world tech.
     </p>
   </section>
 
@@ -45,6 +46,7 @@
         <span class="tag">Data Analysis</span>
         <span class="tag">Mathematical Modeling</span>
         <span class="tag">Object-Oriented Programming</span>
+        <span class="tag">Machine Learning</span>
       </div>
       <div>
         <h3>Languages</h3>
@@ -74,10 +76,10 @@
   </section>
 
   <section id="projects">
-    <h2 style="text-align: center; margin-top: 2rem;">Projects</h2>
+    <h2>Projects</h2>
 
     <div class="card">
-      <h3> Class Schedule Planner — NYU VIP</h3>
+      <h3><a class="project-link" href="projects/class-schedule-planner.html">📊 Class Schedule Planner — NYU VIP</a></h3>
       <p>Spring 2025 | New York, NY</p>
       <ul>
         <li>Python app that visualizes weekly class input as a grid schedule.</li>
@@ -86,7 +88,7 @@
     </div>
 
     <div class="card">
-      <h3> COMAP CO₂ Prediction Model</h3>
+      <h3><a class="project-link" href="projects/co2-prediction-model.html">🌍 COMAP CO₂ Prediction Model</a></h3>
       <p>Nov 2022 | Beijing, China</p>
       <ul>
         <li>Analyzed CO₂ data (1959–2021) using ARIMA and LSTM models.</li>
@@ -98,7 +100,7 @@
   <section id="contact" class="card">
     <h2>Contact Me</h2>
     <p>Send me a message and I’ll get back to you!</p>
-    <form action="https://formspree.io/f/mdklyjdg" method="POST">
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="text" name="name" placeholder="Your Name" required><br/>
       <input type="email" name="email" placeholder="Your Email" required><br/>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea><br/>
@@ -109,6 +111,32 @@
   <footer class="card">
     <p><a href="resume.pdf" download>📄 Download My Resume (PDF)</a></p>
     <p>© 2025 Curt Li</p>
+  
+    <p><button id="resumePreviewBtn" type="button">👀 Preview Resume</button></p>
+    <div id="resumePreview" class="resume-preview" hidden>
+      <iframe src="resume.pdf" title="Resume preview" loading="lazy"></iframe>
+    </div>
+
   </footer>
+
+<script>
+  (function() {
+    var btn = document.getElementById('resumePreviewBtn');
+    var preview = document.getElementById('resumePreview');
+    if (btn && preview) {
+      btn.addEventListener('click', function() {
+        var isHidden = preview.hasAttribute('hidden');
+        if (isHidden) {
+          preview.removeAttribute('hidden');
+          btn.textContent = 'Hide Preview';
+        } else {
+          preview.setAttribute('hidden', '');
+          btn.textContent = '👀 Preview Resume';
+        }
+      });
+    }
+  })();
+</script>
+
 </body>
 </html>
