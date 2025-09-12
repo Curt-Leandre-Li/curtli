@@ -1,115 +1,62 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #1a1a1a;
-  color: #f2f2f2;
-  text-align: center;
-  padding-bottom: 80px;
-}
-
-/* Header */
-header {
-  background-color: #1a1a1a;
-  border-bottom: 1px solid #333;
-  padding: 1rem 0;
-}
-
-.nav-container {
+/* === Global Card & Layout Styling === */
+.social-grid {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  font-family: 'Georgia', serif;
-  color: #f2f2f2;
-}
-
-nav a {
-  margin-left: 1.5rem;
-  text-decoration: none;
-  color: #f2f2f2;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #bb86fc;
-}
-
-/* Sections */
-section {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 2rem;
-}
-
-/* Card Layout */
-.card {
-  background-color: #262626;
-  border: 1px solid #444;
+.social-item {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
   border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  text-align: left;
+  background: color-mix(in oklab, var(--card), white 4%);
+  color: var(--fg);
+  border: 1px solid color-mix(in oklab, var(--acc), black 15%);
+  transition: background .18s ease, color .18s ease,
+              transform .18s ease, box-shadow .18s ease;
+  box-shadow: var(--shadow);
+}
+.social-item:hover {
+  background: var(--fg);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px #0000002e;
 }
 
-.card h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  border-bottom: 1px solid #444;
-  padding-bottom: 0.5rem;
+/* Resume card */
+.resume-card {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.resume-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px #0000002e;
 }
 
-.card h3 {
-  margin-top: 1rem;
-  font-size: 1.2rem;
+/* Resume preview */
+.preview {
+  position: relative;
+  padding-top: 66%;
+}
+.abs {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .preview {
+    padding-top: 0;
+    height: 420px;
+  }
 }
 
-.card p, .card ul {
-  margin: 0.5rem 0;
-}
-
-.card ul {
-  padding-left: 1.2rem;
-}
-
-.card li {
-  margin-bottom: 0.5rem;
-}
-
-/* Tags */
-.tag {
-  background-color: #333;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin: 5px;
-  display: inline-block;
-  font-size: 0.85rem;
-}
-
-/* Resume Download */
-a {
-  color: #bb86fc;
-}
-
-/* --- Enhancements --- */
-
-/* Contact form smoothing */
+/* === Contact form smoothing === */
 #contact form input,
 #contact form textarea {
   width: 100%;
-  max-width: 100%;
   padding: 12px 14px;
   margin: 8px 0;
   border-radius: 12px;
@@ -119,13 +66,11 @@ a {
   outline: none;
   transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
-
 #contact form input:focus,
 #contact form textarea:focus {
   border-color: #bb86fc;
   box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.25);
 }
-
 #contact form button {
   width: 100%;
   padding: 12px 16px;
@@ -137,28 +82,25 @@ a {
   cursor: pointer;
   transition: transform 0.05s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
 #contact form button:hover {
   background-color: #333;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
-
 #contact form button:active {
   transform: translateY(1px);
 }
 
-/* Project title links */
+/* === Project title links === */
 .project-link {
   text-decoration: none;
   color: #f2f2f2;
   transition: color 0.2s ease;
 }
-
 .project-link:hover {
   color: #bb86fc;
 }
 
-/* Resume preview container */
+/* === Resume preview container === */
 .resume-preview {
   margin-top: 1rem;
   border: 1px solid #444;
@@ -166,56 +108,33 @@ a {
   overflow: hidden;
   background-color: #1a1a1a;
 }
-
 .resume-preview iframe {
   width: 100%;
   height: 600px;
   border: 0;
   display: block;
 }
-/* === Reveal-on-scroll: bottom-touch -> gradual appear === */
-:root {
-  --reveal-duration: 700ms;
-  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
 
-/* Initial state for any block we reveal */
+/* === Reveal-on-scroll animation === */
+:root {
+  --reveal-duration: 720ms;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-radius: 16px;
+}
 .reveal-block {
-  position: relative;
   opacity: 0;
   transform: translateY(24px);
   filter: blur(6px);
-  clip-path: inset(18% 0 0 0 round 16px); /* reveals from bottom upward */
+  clip-path: inset(18% 0 0 0 round var(--reveal-radius));
   transition:
     opacity var(--reveal-duration) var(--reveal-ease),
     transform var(--reveal-duration) var(--reveal-ease),
     filter var(--reveal-duration) var(--reveal-ease),
     clip-path 900ms var(--reveal-ease);
-  will-change: opacity, transform, filter, clip-path;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
 }
-
-/* Soft gradient sheen that fades out as block appears */
-.reveal-block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
-  opacity: 0.6;
-  transition: opacity var(--reveal-duration) var(--reveal-ease);
-  mix-blend-mode: screen;
-}
-
-/* Visible state once the block is triggered */
 .reveal-block.is-visible {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
-  clip-path: inset(0 0 0 0 round 16px);
-}
-
-.reveal-block.is-visible::before {
-  opacity: 0;
+  clip-path: inset(0 0 0 0 round var(--reveal-radius));
 }

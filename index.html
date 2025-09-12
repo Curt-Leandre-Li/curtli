@@ -1,189 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Curt Li</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-  <script>
-  // Reveal blocks when the bottom of the viewport touches them
-  (function () {
-    // Select which elements count as "blocks". Here we use <section>.
-    // You can add others (e.g., '.project-card') if needed.
-    const blocks = Array.from(document.querySelectorAll('section'));
+<html lang="en" style="scroll-behavior:smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curt Li — CS & Data Science Student</title>
+    <meta name="description" content="Profile of Curt Li, NYU sophomore majoring in Computer & Data Science. Passionate about applied math, coding, and data analysis.">
+    <meta property="og:title" content="Curt Li — CS & Data Science Student">
+    <meta property="og:description" content="Welcome to my profile! I’m a sophomore at NYU majoring in CS & Data Science. Passionate about math, coding, and data analysis.">
+    <meta property="og:image" content="/og.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/_astro/about.BfZ63nLP.css">
 
-    // Add the reveal class without changing your content
-    blocks.forEach(el => el.classList.add('reveal-block'));
+    <!-- Existing inline styles from template -->
+    <style>
+      .social-grid[data-astro-cid]{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+      .social-item[data-astro-cid]{width:96px;height:96px;display:grid;place-items:center;border-radius:calc(var(--radius) - 6px);background:color-mix(in oklab,var(--card),white 4%);color:var(--fg);border:1px solid color-mix(in oklab,var(--acc),black 15%);transition:background .18s ease,color .18s ease,transform .18s ease,box-shadow .18s ease;box-shadow:var(--shadow)}
+      .social-item[data-astro-cid]:hover{background:var(--fg);color:#000;transform:translateY(-2px);box-shadow:0 16px 40px #0000002e}
+      .resume-card{transition:transform .18s ease,box-shadow .18s ease}
+      .resume-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px #0000002e}
+      .preview{position:relative;padding-top:66%}
+      .abs{position:absolute;inset:0;width:100%;height:100%}
+      @media (min-width: 768px){.preview{padding-top:0;height:420px}}
+    </style>
 
-    // Observer triggers as soon as any pixel enters the viewport bottom edge.
-    // rootMargin bottom is a tiny negative to approximate "bottom touches next block".
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          // Unobserve once revealed (one-time animation)
-          io.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0,          // fire when it just enters
-      rootMargin: '0px 0px -1px 0px' // shrink bottom edge by 1px
-    });
+    <!-- Reveal-on-scroll animation CSS -->
+    <style id="reveal-on-scroll-css">
+      :root{
+        --reveal-duration: 720ms;
+        --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --reveal-radius: 16px;
+      }
+      .reveal-block{opacity:0;transform:translateY(24px);filter:blur(6px);
+        clip-path: inset(18% 0 0 0 round var(--reveal-radius));
+        transition:opacity var(--reveal-duration) var(--reveal-ease),
+          transform var(--reveal-duration) var(--reveal-ease),
+          filter var(--reveal-duration) var(--reveal-ease),
+          clip-path 900ms var(--reveal-ease);}
+      .reveal-block.is-visible{opacity:1;transform:translateY(0);filter:blur(0);
+        clip-path: inset(0 0 0 0 round var(--reveal-radius));}
+    </style>
+  </head>
 
-    blocks.forEach(el => io.observe(el));
-  })();
-</script>
-
-<body>
-  <header>
-    <div class="nav-container">
-      <div class="logo">Curt Li</div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <section id="about" class="card">
-    <h1 class="big-name">I'm Curt Li.</h1>
-    <p>
-      I'm passionate about combining data analysis and software engineering to solve real-world problems.
-      My background spans mathematical modeling, Python simulations, and applied research in mobility and climate.
-      I'm currently studying Computer and Data Science at NYU, bringing math-heavy insights to real-world tech.
-    </p>
-  </section>
-
-  <section id="skills" class="card">
-    <h2>Skills</h2>
-    <div class="skill-section">
-      <div>
-        <h3>Programming Languages</h3>
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">C</span>
-        <span class="tag">HTML</span>
-        <span class="tag">R</span>
+  <body class="pt-14">
+    <nav class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[color-mix(in_oklab,var(--bg),black_10%)]/60 backdrop-blur">
+      <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="/" class="font-semibold tracking-tight no-underline">Curt Li</a>
+        <div class="flex items-center gap-6 text-sm">
+          <a class="no-underline opacity-90 hover:opacity-100" href="/#home">Home</a>
+          <a class="no-underline opacity-90 hover:opacity-100" href="/#projects">Projects</a>
+          <a class="no-underline opacity-90 hover:opacity-100" href="/#about">About</a>
+          <a class="no-underline opacity-90 hover:opacity-100" href="/#resume">Resume</a>
+        </div>
       </div>
-      <div>
-        <h3>Concepts</h3>
-        <span class="tag">Data Analysis</span>
-        <span class="tag">Mathematical Modeling</span>
-        <span class="tag">Object-Oriented Programming</span>
-        <span class="tag">Machine Learning</span>
-      </div>
-      <div>
-        <h3>Languages</h3>
-        <span class="tag">English (Fluent)</span>
-        <span class="tag">Mandarin (Native)</span>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <section id="education" class="card">
-    <h2>Education</h2>
-    <p><strong>New York University</strong> – B.A. in Computer and Data Science</p>
-    <p>📍 New York, NY | Sep 2025 – Present</p>
-    <p><strong>B.S. in Applied Math</strong> (Sep 2024 – May 2025)</p>
-    <p><em>Coursework:</em> Data Structures (Python), Linear Algebra, Principles of Data Science, Computer Systems Org</p>
-  </section>
+    <main>
+      <section id="home" class="min-h-[90vh] grid place-items-center text-center px-6 relative">
+        <div class="w-full flex flex-col items-center">
+          <h1 class="font-semibold tracking-tight" style="font-size:clamp(3rem, 7vw, 6rem);line-height:1.08;">
+            Hello, I'm Curt Li
+          </h1>
+          <p class="mt-4 opacity-90 max-w-prose mx-auto text-lg">
+            Welcome to my profile! I am currently a sophomore student at NYU, majoring in Computer &amp; Data Science.  
+            I am passionate about integrating applied math and coding to data analysis. Looking forward to reach out!
+          </p>
+        </div>
+      </section>
 
-  <section id="experience" class="card">
-    <h2>Experience</h2>
-    <p><strong>Research Assistant @ Hunan University</strong></p>
-    <p>📍 Beijing, China | June 2023 – May 2024</p>
-    <ul>
-      <li>Researched Mobility as a Service (MaaS) for Beijing's public transit system.</li>
-      <li>Improved data accuracy by 25% via better survey design and Python data processing.</li>
-      <li>Simulated a 15% travel time reduction using Python-based models.</li>
-    </ul>
-  </section>
+      <section id="projects" class="min-h-screen px-6 pt-[22vh]">
+        <div class="max-w-5xl w-full mx-auto">
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">Projects</h2>
+          <!-- Example project cards remain here -->
+        </div>
+      </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+      <section id="about" class="min-h-screen px-6 pt-[22vh]">
+        <div class="max-w-5xl w-full mx-auto pb-24">
+          <div class="card p-8">
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">About</h2>
+            <p class="mt-4 opacity-90 text-lg md:text-xl leading-8 md:leading-9">
+              Hi, I’m <strong>Curt Li</strong>, a Computer &amp; Data Science student at NYU’s College of Arts &amp; Science (CAS).  
+              I enjoy combining applied math with coding to tackle data problems, and I’m always exploring ways to turn raw data into meaningful insights.
+            </p>
+          </div>
 
-    <div class="card">
-      <h3><a class="project-link" href="projects/class-schedule-planner.html"> Class Schedule Planner — NYU VIP</a></h3>
-      <p>Spring 2025 | New York, NY</p>
-      <ul>
-        <li>Python app that visualizes weekly class input as a grid schedule.</li>
-        <li>Handles overlapping class times and generates a clean UI layout.</li>
-      </ul>
-    </div>
+          <div class="mt-8">
+            <div class="social-grid" data-astro-cid>
+              <a class="social-item no-underline" href="https://github.com/Curt-Leandre-Li/curtli" aria-label="GitHub" rel="noopener" target="_blank" data-astro-cid>
+                GitHub
+              </a>
+              <a class="social-item no-underline" href="mailto:yl12688@nyu.edu" aria-label="School Email" rel="noopener" data-astro-cid>
+                School Email
+              </a>
+              <a class="social-item no-underline" href="mailto:curtleandre0106@gmail.com" aria-label="Personal Email" rel="noopener" data-astro-cid>
+                Personal Email
+              </a>
+              <a class="social-item no-underline" href="https://www.linkedin.com/in/curt-li-71909932b/" aria-label="LinkedIn" rel="noopener" target="_blank" data-astro-cid>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="card">
-      <h3><a class="project-link" href="projects/co2-prediction-model.html"> COMAP CO₂ Prediction Model</a></h3>
-      <p>Nov 2022 | Beijing, China</p>
-      <ul>
-        <li>Analyzed CO₂ data (1959–2021) using ARIMA, Linear Regression and LSTM models.</li>
-        <li>Built a climate change forecast model and published findings.</li>
-      </ul>
-    </div>
-  </section>
+      <section id="resume" class="min-h-screen px-6 pt-[22vh]">
+        <div class="max-w-5xl w-full mx-auto pb-24">
+          <div class="resume-card card overflow-hidden">
+            <div class="grid md:grid-cols-5">
+              <div class="p-6 md:col-span-2 flex items-center">
+                <div>
+                  <h3 class="text-2xl font-semibold tracking-tight">Resume</h3>
+                  <p class="opacity-80 mt-2 text-sm">Preview the first page and grab a copy. Optimized for 1-page screen &amp; print.</p>
+                  <div class="mt-4 flex gap-3">
+                    <a class="btn primary" href="/resume.pdf" target="_blank">View</a>
+                    <a class="btn subtle" href="/resume.pdf" download>Download</a>
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-span-3 bg-card-soft relative">
+                <div class="preview">
+                  <object data="/resume.pdf" type="application/pdf" class="abs">
+                    <img src="/resume-preview.png" alt="Resume preview" class="abs object-contain">
+                  </object>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <section id="contact" class="card">
-    <h2>Contact Me</h2>
-    <p>Send me a message and I’ll get back to you!</p>
-    <section id="contact">
-  <!-- keep your heading/paragraphs here -->
-  <!-- replace JUST the form below -->
-  <form
-    action="https://formspree.io/f/mdklyjdg"
-    method="POST"
-  >
-    <label>
-      Your email:
-      <input type="email" name="email">
-    </label>
+    <!-- Reveal-on-scroll script -->
+    <script id="reveal-on-scroll-js">
+      (function () {
+        const targets = ['#projects', '#about', '#resume']
+          .map(sel => document.querySelector(sel))
+          .filter(Boolean);
 
-    <label>
-      Your message:
-      <textarea name="message"></textarea>
-    </label>
+        targets.forEach(el => el.classList.add('reveal-block'));
 
-    <!-- your other form fields go here -->
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, {root: null, threshold: 0, rootMargin: '0px 0px -1px 0px'});
 
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-  </section>
-
-  <footer class="card">
-    <p><a href="resume.pdf" download>📄 Download My Resume (PDF)</a></p>
-    <p>© 2025 Curt Li</p>
-  
-    <p><button id="resumePreviewBtn" type="button">👀 Preview Resume</button></p>
-    <div id="resumePreview" class="resume-preview" hidden>
-      <iframe src="resume.pdf" title="Resume preview" loading="lazy"></iframe>
-    </div>
-
-  </footer>
-
-<script>
-  (function() {
-    var btn = document.getElementById('resumePreviewBtn');
-    var preview = document.getElementById('resumePreview');
-    if (btn && preview) {
-      btn.addEventListener('click', function() {
-        var isHidden = preview.hasAttribute('hidden');
-        if (isHidden) {
-          preview.removeAttribute('hidden');
-          btn.textContent = 'Hide Preview';
-        } else {
-          preview.setAttribute('hidden', '');
-          btn.textContent = '👀 Preview Resume';
-        }
-      });
-    }
-  })();
-</script>
-
-</body>
+        targets.forEach(el => io.observe(el));
+      })();
+    </script>
+  </body>
 </html>
