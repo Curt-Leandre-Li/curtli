@@ -173,3 +173,49 @@ a {
   border: 0;
   display: block;
 }
+/* === Reveal-on-scroll: bottom-touch -> gradual appear === */
+:root {
+  --reveal-duration: 700ms;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Initial state for any block we reveal */
+.reveal-block {
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  clip-path: inset(18% 0 0 0 round 16px); /* reveals from bottom upward */
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease),
+    filter var(--reveal-duration) var(--reveal-ease),
+    clip-path 900ms var(--reveal-ease);
+  will-change: opacity, transform, filter, clip-path;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Soft gradient sheen that fades out as block appears */
+.reveal-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
+  opacity: 0.6;
+  transition: opacity var(--reveal-duration) var(--reveal-ease);
+  mix-blend-mode: screen;
+}
+
+/* Visible state once the block is triggered */
+.reveal-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  clip-path: inset(0 0 0 0 round 16px);
+}
+
+.reveal-block.is-visible::before {
+  opacity: 0;
+}
