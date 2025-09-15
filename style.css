@@ -83,14 +83,10 @@ body {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: var(--acc);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 700;
+  object-fit: cover; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
+
 
 /* === Sections === */
 .section {
